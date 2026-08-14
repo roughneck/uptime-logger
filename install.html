@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Installing UptimeLogger</title>
+<meta name="description" content="How to install UptimeLogger on Windows and macOS, including the one-time step each system needs for an unsigned application.">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site">
+  <img src="assets/icon.svg" alt="">
+  <span class="name"><a href="./">UptimeLogger</a></span>
+  <nav>
+    <a href="de/installation.html">Deutsch</a>
+  </nav>
+</header>
+
+<main>
+
+  <h1>Installing UptimeLogger</h1>
+
+  <div class="note">
+    <strong>Version 0.1 is not code-signed.</strong> Both operating systems warn about
+    software from a developer they cannot verify. The steps below are the standard way to
+    accept it, and each is needed once.
+  </div>
+
+  <h2>macOS (11 Big Sur or newer)</h2>
+  <ol>
+    <li>Open the DMG and drag <code>UptimeLogger.app</code> onto the <code>Applications</code>
+    shortcut beside it.</li>
+    <li>On first launch macOS says the developer cannot be verified. Open
+    <strong>System Settings → Privacy &amp; Security</strong> (macOS 13 Ventura and newer) or
+    <strong>System Preferences → Security &amp; Privacy</strong> (macOS 11 and 12), scroll to
+    the message about UptimeLogger and choose <strong>Open Anyway</strong>.</li>
+    <li>The icon appears in the menu bar. Choose <strong>Open Dashboard</strong> to see your
+    data.</li>
+  </ol>
+  <p>The application has no Dock icon and no entry in the app switcher on purpose — it is a
+  background monitor.</p>
+
+  <h3>Wi-Fi network names</h3>
+  <p>Recent macOS versions only reveal the Wi-Fi name to applications that have location
+  permission. UptimeLogger works fully without it; the Network column then simply shows the
+  interface on its own, for example <code>en0</code>. Turn on <em>Look up the Wi-Fi name</em>
+  in the settings if you want the name, and grant the permission macOS asks for.</p>
+
+  <h2>Windows (10 or newer)</h2>
+  <ol>
+    <li>Run the installer. It installs for the current user and needs no administrator
+    rights. <strong>Start UptimeLogger automatically when I log in</strong> is ticked by
+    default; untick it if you would rather start the program yourself.</li>
+    <li>SmartScreen warns about an unknown publisher. Choose <strong>More info → Run
+    anyway</strong>.</li>
+    <li>The icon appears in the notification area.</li>
+  </ol>
+
+  <h2>Starting automatically</h2>
+  <p>The switch is <strong>Settings → Start automatically when I log in</strong> and works
+  the same on both systems. The Windows installer offers the same thing as a checkbox, and
+  both write the same entry, so the two can never disagree.</p>
+  <ul>
+    <li><strong>Windows:</strong> an entry under
+    <code>HKCU\Software\Microsoft\Windows\CurrentVersion\Run</code> — the same list the Task
+    Manager's <em>Startup</em> tab shows. Switching it off there wins, and UptimeLogger then
+    reports "off" as well rather than claiming an autostart Windows is ignoring.</li>
+    <li><strong>macOS:</strong> a launch agent at
+    <code>~/Library/LaunchAgents/app.uptimelogger.plist</code>. It takes effect at the next
+    login.</li>
+  </ul>
+  <p>Neither entry needs administrator rights, and both apply to your user account only.</p>
+
+  <h2>Where the data lives</h2>
+  <ul>
+    <li>macOS: <code>~/Library/Application Support/UptimeLogger/uptimelogger.db</code></li>
+    <li>Windows: <code>%LOCALAPPDATA%\UptimeLogger\uptimelogger.db</code></li>
+  </ul>
+  <p>Deleting that folder removes every recorded event and every setting. A small log file of
+  recent unexpected errors, <code>uptimelogger.log</code>, lives next to the database.</p>
+
+  <h2>Uninstalling</h2>
+  <p>Quit UptimeLogger from the tray menu first on either platform, so it is not running
+  while you remove it.</p>
+  <ul>
+    <li><strong>macOS:</strong> drag <code>UptimeLogger.app</code> from
+    <code>/Applications</code> to the Trash. The database and the log are not inside the
+    bundle and are left behind; delete
+    <code>~/Library/Application Support/UptimeLogger</code> yourself if you also want the
+    recorded history gone. Switch the autostart off before uninstalling, or delete
+    <code>~/Library/LaunchAgents/app.uptimelogger.plist</code> by hand — otherwise macOS
+    keeps trying to launch a program that is no longer there.</li>
+    <li><strong>Windows:</strong> use <strong>Settings → Apps</strong> to find UptimeLogger
+    and uninstall it. That removes the program and the autostart entry, but not
+    <code>%LOCALAPPDATA%\UptimeLogger</code>.</li>
+  </ul>
+
+  <h2>Troubleshooting</h2>
+
+  <h3>A saved link to the dashboard does not load, but the application is running</h3>
+  <p>If port 17641 was already taken when UptimeLogger started, it binds the next free port
+  instead. Always use <strong>Open Dashboard</strong> from the tray menu — it opens whatever
+  port the application is actually using.</p>
+
+  <h3>A short outage right after waking from sleep is missing from the log</h3>
+  <p>After a gap, UptimeLogger waits out the <em>Wait after waking from sleep</em> setting
+  before it starts recording again, so a wobbly reconnect is not logged as an outage. Lower
+  the setting (down to 0) if you would rather see every short outage at the cost of the
+  occasional false one.</p>
+
+  <h3>Something else looks wrong</h3>
+  <p>The first place to look is the log file next to the database. It is a small, capped file
+  of the application's own error messages — including database and bind failures — and is
+  almost always more specific than anything visible in the dashboard.</p>
+
+</main>
+
+<footer class="site">
+  <a href="./">Home</a>
+  <a href="privacy.html">Privacy</a>
+  <a href="imprint.html">Imprint</a>
+  <a href="de/installation.html">Deutsch</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy — UptimeLogger</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site">
+  <img src="assets/icon.svg" alt="">
+  <span class="name"><a href="./">UptimeLogger</a></span>
+  <nav><a href="de/datenschutz.html">Deutsch</a></nav>
+</header>
+
+<main>
+
+  <h1>Privacy</h1>
+  <p class="meta">The German version is the legally binding one:
+    <a href="de/datenschutz.html">Datenschutzerklärung</a>.</p>
+
+  <h2>Who is responsible</h2>
+  <p>
+    <!-- PLACEHOLDER — same details as the imprint -->
+    [FULL NAME]<br>
+    [STREET AND NUMBER]<br>
+    [POSTCODE AND TOWN]<br>
+    Germany<br>
+    E-mail: [E-MAIL ADDRESS]
+  </p>
+
+  <h2>The application</h2>
+  <p>UptimeLogger runs entirely on your own machine. It has no user account, no backend and
+  no analytics. Everything it records — connection events, settings, the log file — is stored
+  in a local database on your device and is never transmitted anywhere.</p>
+  <p>The application makes two kinds of outbound requests:</p>
+  <ul>
+    <li><strong>Connection probes.</strong> TCP connections to the servers configured in the
+    settings (by default public DNS resolvers), used solely to determine whether your
+    internet connection is up. They carry no data about you or about the application.</li>
+    <li><strong>Version check.</strong> If left switched on, the application requests a small
+    static file from this website to find out whether a newer version exists. The request
+    contains no identifier, no usage data and no information about your installation; as with
+    any web request, the hosting provider sees your IP address (see below). The check can be
+    switched off in the settings.</li>
+  </ul>
+
+  <h2>This website</h2>
+  <p>This site is hosted on GitHub Pages, and the downloads are served from GitHub Releases,
+  both operated by GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA.
+  When you open a page or download a file, GitHub processes technical connection data —
+  including your IP address, the time of the request, the page requested, and browser and
+  operating system details — in server log files. This is necessary to deliver the site and
+  serves our legitimate interest in operating and securing it (Art. 6(1)(f) GDPR). Details
+  are in
+  <a href="https://docs.github.com/site-policy/privacy-policies/github-privacy-statement">GitHub's
+  privacy statement</a>. Data may be processed in the United States.</p>
+  <p>This site sets no cookies, embeds no third-party fonts or scripts, and runs no analytics.</p>
+
+  <h2>Your rights</h2>
+  <p>You have the right to information about, correction of, deletion of and restriction of
+  the processing of your personal data, the right to object to processing and the right to
+  data portability (Art. 15–21 GDPR), as well as the right to complain to a supervisory
+  authority. Use the e-mail address above to exercise them.</p>
+
+  <p class="meta">Last updated: [DATE]</p>
+
+</main>
+
+<footer class="site">
+  <a href="./">Home</a>
+  <a href="install.html">Installation</a>
+  <a href="imprint.html">Imprint</a>
+</footer>
+
+</body>
+</html>

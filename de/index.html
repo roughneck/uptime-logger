@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UptimeLogger — sehen, wann das Internet weg war</title>
+<meta name="description" content="Kostenlose Verbindungsüberwachung für Windows und macOS. Zeichnet jeden Internetausfall auf und zeigt die Historie als Kalender-Heatmap. Kein Konto, keine Telemetrie.">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/icon-256.png" sizes="256x256">
+<link rel="stylesheet" href="../style.css">
+<link rel="alternate" hreflang="en" href="https://uptimelogger.bartels.ug/">
+<link rel="alternate" hreflang="de" href="https://uptimelogger.bartels.ug/de/">
+<meta property="og:title" content="UptimeLogger">
+<meta property="og:description" content="Kostenlose Verbindungsüberwachung für Windows und macOS. Zeichnet jeden Internetausfall auf und zeigt die Historie als Kalender-Heatmap.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://uptimelogger.bartels.ug/de/">
+</head>
+<body>
+
+<header class="site">
+  <img src="../assets/icon.svg" alt="">
+  <span class="name">UptimeLogger</span>
+  <nav>
+    <a href="installation.html">Installation</a>
+    <a href="../">English</a>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero">
+    <img src="../assets/icon.svg" alt="UptimeLogger-Symbol">
+    <h1>Sehen, wann das Internet weg war</h1>
+    <p class="claim">UptimeLogger überwacht die Verbindung rund um die Uhr, protokolliert jede
+    Unterbrechung und zeigt die Historie — damit das nächste Gespräch mit dem Anbieter über
+    Fakten geht und nicht über Eindrücke.</p>
+    <ul class="badges">
+      <li>Windows und macOS</li>
+      <li>Kostenlos</li>
+      <li>Kein Konto</li>
+      <li>Keine Telemetrie</li>
+    </ul>
+  </section>
+
+  <div class="downloads">
+    <a class="download" href="https://github.com/roughneck/uptimelogger/releases/download/v0.1.0/UptimeLogger-0.1.0.dmg">
+      <strong>Download für macOS</strong>
+      <span>Universal-DMG · ab macOS 11</span>
+    </a>
+    <a class="download" href="https://github.com/roughneck/uptimelogger/releases/download/v0.1.0/UptimeLogger-0.1.0-setup.exe">
+      <strong>Download für Windows</strong>
+      <span>Installer · ab Windows 10</span>
+    </a>
+  </div>
+  <p class="meta">Version 0.1.0 ·
+    <a href="https://github.com/roughneck/uptimelogger/releases/tag/v0.1.0">Release-Hinweise und Prüfsummen</a></p>
+
+  <div class="note">
+    <strong>Version 0.1 ist nicht signiert.</strong> Windows und macOS warnen deshalb beim
+    ersten Start. Mit dem Download ist nichts verkehrt — auf der
+    <a href="installation.html">Installationsseite</a> steht der einmalige Schritt, den jedes
+    System dafür braucht.
+  </div>
+
+  <figure>
+    <img src="../assets/placeholder.svg" alt="Das UptimeLogger-Dashboard mit dem aktuellen Status und den Kennzahlen des gewählten Zeitraums">
+    <figcaption>Das Dashboard läuft lokal im Browser — keine Cloud, keine Anmeldung.</figcaption>
+  </figure>
+
+  <h2>Was die Anwendung tut</h2>
+  <ul class="features">
+    <li>
+      <h3>Durchgehende Überwachung</h3>
+      <p>Ein Hintergrundprozess fragt eine einstellbare Liste von Servern ab. Zeitüberschreitung
+      oder abgewiesene Verbindung beenden eine Online-Strecke, eine erfolgreiche Verbindung
+      beendet einen Ausfall.</p>
+    </li>
+    <li>
+      <h3>Status im Tray</h3>
+      <p>Symbol in der Menüleiste unter macOS, im Infobereich unter Windows: grün online, rot
+      offline. Kein Dock-Symbol, kein Fenster im Weg.</p>
+    </li>
+    <li>
+      <h3>Kalender-Heatmap</h3>
+      <p>Ein Jahr auf einen Blick. Je dunkler ein Tag, desto mehr Unterbrechungen hatte er.
+      Ein Klick auf den Tag stellt Log und Kennzahlen darauf um.</p>
+    </li>
+    <li>
+      <h3>Die Zahlen, auf die es ankommt</h3>
+      <p>Ausfälle, Zeit offline, längster Ausfall, Verfügbarkeit und überwachte Zeit — für
+      heute, diese Woche, diesen Monat oder einen beliebigen Tag.</p>
+    </li>
+    <li>
+      <h3>Vollständiges Ereignisprotokoll</h3>
+      <p>Jede Online- und Offline-Strecke mit Startzeit und Dauer, dazu Netzwerkschnittstelle
+      und WLAN-Name. Als CSV exportierbar.</p>
+    </li>
+    <li>
+      <h3>Startet mit der Sitzung</h3>
+      <p>Ein Verbindungsprotokoll ist so viel wert wie die Zeit, die es abdeckt. UptimeLogger
+      kann sich deshalb beim Anmelden selbst starten — optional, umschaltbar im Dashboard.</p>
+    </li>
+  </ul>
+
+  <h2>Wie es funktioniert</h2>
+  <p>UptimeLogger baut TCP-Verbindungen zu einer Serverliste auf, statt echte Pings zu senden:
+  ein ICMP-Ping braucht unter Windows Administratorrechte, eine TCP-Verbindung funktioniert
+  überall ohne Sonderrechte. Die Standardziele sind öffentliche DNS-Server, direkt über ihre
+  IP-Adresse angesprochen — so wird eine kaputte Namensauflösung nicht mit einer kaputten
+  Internetverbindung verwechselt.</p>
+
+  <p>Die Ergebnisse landen in einer lokalen SQLite-Datenbank. Das Dashboard liefert die
+  Anwendung selbst unter <code>http://127.0.0.1:17641/</code> aus, geöffnet wird es über das
+  Tray-Menü. Wer vom Handy nachsehen will, kann den Zugriff aus dem LAN einschalten — er ist
+  standardmäßig aus und im eingeschalteten Zustand über ein Token geschützt.</p>
+
+  <h2>Die Daten bleiben bei dir</h2>
+  <dl class="facts">
+    <dt>Kein Konto, kein Server</dt>
+    <dd>Es wird nichts hochgeladen. Es gibt kein Backend, das Daten halten könnte.</dd>
+    <dt>Keine Telemetrie</dt>
+    <dd>Die Anwendung meldet keine Nutzung. Nach außen gehen nur die Verbindungsprüfungen
+    selbst und — solange eingeschaltet — eine Versionsprüfung gegen diese Webseite, die eine
+    kleine statische Datei abruft und außer der Anfrage selbst nichts über dich überträgt. Sie
+    lässt sich in den Einstellungen abschalten.</dd>
+    <dt>Lokale Datenbank</dt>
+    <dd>macOS: <code>~/Library/Application Support/UptimeLogger/</code><br>
+    Windows: <code>%LOCALAPPDATA%\UptimeLogger\</code><br>
+    Wer diesen Ordner löscht, löscht jedes aufgezeichnete Ereignis.</dd>
+  </dl>
+
+  <h2>Fragen</h2>
+
+  <h3>Kostet das etwas?</h3>
+  <p>Nein. Kostenlos, keine Testphase, keine Bezahlversion. Das ist wörtlich gemeint und auch
+  nur das: der Quellcode ist nicht veröffentlicht.</p>
+
+  <h3>Bremst das meine Verbindung?</h3>
+  <p>Nein. Eine Prüfung öffnet eine TCP-Verbindung und schließt sie wieder — ein paar hundert
+  Byte alle paar Sekunden.</p>
+
+  <h3>Warum warnt mein Rechner bei der Installation?</h3>
+  <p>Weil Version 0.1 nicht signiert ist. Siehe <a href="installation.html">Installation</a>.</p>
+
+  <h3>Was passiert, während der Rechner schläft?</h3>
+  <p>Es wird nichts aufgezeichnet — ein schlafender Rechner kann keine Verbindung verlieren.
+  UptimeLogger markiert die Lücke als solche, statt sie als Ausfall zu zählen, und wartet nach
+  dem Aufwachen einen Moment, bevor es wieder aufzeichnet. So wird ein normales
+  WLAN-Wiederverbinden nicht als Unterbrechung protokolliert.</p>
+
+</main>
+
+<footer class="site">
+  <a href="installation.html">Installation</a>
+  <a href="datenschutz.html">Datenschutz</a>
+  <a href="impressum.html">Impressum</a>
+  <a href="../">English</a>
+</footer>
+
+</body>
+</html>
