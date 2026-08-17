@@ -15,8 +15,15 @@ not show an English screenshot:
   stays sharp.
 - **Show the whole dashboard in one shot**: status, the figures block, the heatmap and the
   first rows of the log. Scroll so that no section is cut off in the middle.
-- **Light mode.** The page adapts to the visitor's theme, the screenshot cannot; light is the
-  safer default on a white page.
+- **Theme: either, and it matters less than this file first claimed.** The reasoning here
+  used to be "light is the safer default on a white page" — but the page has a dark mode of
+  its own, so it is not always a white page, and no single choice is right for every visitor.
+  The shipped pair is deliberately mixed: dark on the English page, light on the German one.
+  Both show the theme selector, so it reads as a feature rather than an accident.
+
+  The proper fix, if it ever seems worth two more screenshots: one of each theme per language
+  and a `<picture>` with `media="(prefers-color-scheme: dark)"`, so the screenshot always
+  matches the page around it.
 - **With real data.** A heatmap with a few coloured days and a log with a handful of entries
   says more than an empty one.
 - **Browser chrome**: either a clean window with no bookmarks bar, or cropped away entirely.
@@ -27,8 +34,8 @@ not show an English screenshot:
 Check what is visible: the log shows **Wi-Fi network names** and interface names, and the
 address bar shows the port. Crop or blur anything you would not want on a public page.
 
-## Putting them in
+## Done
 
-Drop both files in `assets/` and change one line per page — `assets/placeholder.svg` becomes
-`assets/dashboard-en.png` in `index.html`, `../assets/placeholder.svg` becomes
-`../assets/dashboard-de.png` in `de/index.html`. Then `assets/placeholder.svg` can go.
+Both files were taken on 17 August 2026 and are in place; `assets/placeholder.svg` is gone.
+This file stays as the recipe for the next pair — a screenshot ages with every visible
+change, and these already show a dashboard from before whatever comes after 0.1.0.
