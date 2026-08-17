@@ -1,20 +1,15 @@
-# UptimeLogger — website and releases
+# UptimeLogger — downloads
 
-This repository is the public face of [UptimeLogger](https://uptimelogger.bartels.ug/): the
-download page served by GitHub Pages, and the releases the page links to. **It does not
-contain the application's source code**, which is not published.
+This repository exists to host the released binaries of
+[UptimeLogger](https://uptimelogger.bartels.ug/), and nothing else. It is public because
+release assets have to be downloadable without an account, and because the winget manifest
+points at them.
 
-## Layout
-
-    index.html              landing page (English)
-    install.html            installation guide (English)
-    privacy.html            privacy notice (English, informational)
-    imprint.html            imprint (English, informational)
-    de/                     the same four pages in German — the legally binding versions
-    latest.json             what the application's update check reads
-    style.css               palette taken from the dashboard, so both look like one product
-    assets/                 icon and screenshots
-    CNAME                   uptimelogger.bartels.ug
+- **Downloads:** see [Releases](https://github.com/roughneck/uptime-logger/releases).
+  Every release lists the SHA256 sum of each artefact in its notes.
+- **Website:** served by GitLab Pages from a private repository. It used to live here; the
+  older commits in this history are that site.
+- **Application source:** not published.
 
 ## Releasing a version
 
@@ -23,10 +18,7 @@ contain the application's source code**, which is not published.
 2. Create the tag `v<version>` here and upload `UptimeLogger-<version>.dmg` and
    `UptimeLogger-<version>-setup.exe` as release assets, with their SHA256 sums in the
    release notes.
-3. Update the version and the download links in `index.html` and `de/index.html`.
-4. Update `latest.json` **last** — it is what tells existing installations that a new version
-   exists, so it must not point at a release that is not fully published yet.
-
-## DNS
-
-`uptimelogger.bartels.ug` is a CNAME to `roughneck.github.io`.
+3. In the website repository, update the version and the download links in `index.html`
+   and `de/index.html`.
+4. Update `latest.json` there **last** — it is what tells existing installations that a new
+   version exists, so it must not point at a release that is not fully published yet.
